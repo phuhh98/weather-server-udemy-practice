@@ -27,11 +27,13 @@ const forecast = function (longitude, latitude, location, callback) {
 				const weather = response.body;
 				const currentTemp = weather.current.temp;
 				const precipProp = weather.hourly[0].pop * 100;
+				const humidity = weather.current.humidity;
+				const feelsLike = weather.current.feels_like;
 				let weatherStat = weather.current.weather[0].description;
 				weatherStat = weatherStat[0].toUpperCase() + weatherStat.slice(1); //Upper case the first letter
 
 				callback(undefined, {
-					forecastData: `${weatherStat}. It is currently ${currentTemp} degree out. There is ${precipProp}% chance of rain in the next 1 hour`,
+					forecastData: `${weatherStat}. It is currently ${currentTemp} degree out, humidity is ${humidity}% and feels like ${feelsLike} degree.	<br/>There is ${precipProp}% chance of rain in the next 1 hour.`,
 					location,
 				});
 			}

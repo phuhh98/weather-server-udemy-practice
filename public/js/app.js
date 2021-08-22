@@ -30,7 +30,7 @@ weatherForm.addEventListener('submit', (event) => {
 
 			console.log(body);
 			messageOne.textContent = body.location;
-			messageTwo.textContent = body.forecastData;
+			messageTwo.innerHTML = body.forecastData;
 		})
 		.catch((err) => {
 			messageTwo.textContent = err.message;
